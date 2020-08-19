@@ -53,7 +53,7 @@ func (l *LinkedList) Get(i int) (*Node, bool) {
 }
 
 func (l *LinkedList) Remove(i int) bool {
-	if i > l.Size-1 {
+	if i >= l.Size-1 {
 		return false
 	}
 

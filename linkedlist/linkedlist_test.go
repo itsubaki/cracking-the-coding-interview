@@ -29,16 +29,18 @@ func TestLinkedList(t *testing.T) {
 
 	rcases := []struct {
 		index int
+		ok    bool
 		value string
 	}{
-		{2, "abd"},
-		{1, "ad"},
-		{0, "d"},
+		{2, true, "abd"},
+		{1, true, "ad"},
+		{0, true, "d"},
+		{0, false, "d"},
 	}
 
 	for _, c := range rcases {
 		ok := list.Remove(c.index)
-		if !ok {
+		if ok != c.ok {
 			t.Errorf("remove(%d)", c.index)
 		}
 
