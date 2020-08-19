@@ -16,7 +16,7 @@ func TestReturnKthToLast(t *testing.T) {
 
 func TestDeleteMiddleNode(t *testing.T) {
 	list := linkedlist.New()
-	for _, c := range []string{"a", "b", "c"} {
+	for _, c := range []string{"a", "b", "c", "d", "e"} {
 		list.Add(c)
 	}
 
@@ -25,8 +25,9 @@ func TestDeleteMiddleNode(t *testing.T) {
 		ok    bool
 		value string
 	}{
-		{1, true, "ac"},
-		{0, true, "c"},
+		{1, true, "acde"},
+		{2, true, "ace"},
+		{1, true, "ae"},
 	}
 
 	for _, c := range cases {
