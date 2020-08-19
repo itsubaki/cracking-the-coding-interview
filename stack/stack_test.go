@@ -3,15 +3,24 @@ package stack
 import "testing"
 
 func TestStack(t *testing.T) {
-	s := New()
-
-	for _, i := range []int{5, 6, 3, 7} {
-		s.Push(i)
+	cases := []struct {
+		value int
+	}{
+		{5},
+		{6},
+		{3},
+		{7},
 	}
 
-	for _, i := range []int{7, 3, 6, 5} {
-		if s.Pop() != i {
-			t.Errorf("%v", i)
+	s := New()
+	for _, c := range cases {
+		s.Push(c.value)
+	}
+
+	for i := len(cases) - 1; i < 0; i-- {
+		if s.Pop() == cases[i].value {
+			continue
 		}
+		t.Errorf("%v", i)
 	}
 }

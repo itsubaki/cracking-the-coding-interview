@@ -14,17 +14,17 @@ func New() *LinkedList {
 	}
 }
 
-func (l *LinkedList) Add(e *Node) {
+func (l *LinkedList) Add(value string) {
 	l.Size++
 	if l.Head == nil {
-		l.Head = e
+		l.Head = &Node{Value: value}
 		return
 	}
 
 	n := l.Head
 	for {
 		if n.Next == nil {
-			n.Next = e
+			n.Next = &Node{Value: value}
 			return
 		}
 

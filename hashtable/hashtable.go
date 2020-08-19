@@ -20,7 +20,7 @@ func (t *HashTable) Put(key, value string) {
 	i := uint((t.Capacity - 1)) & Hash(key, t.Capacity)
 
 	p := t.Table[i]
-	if p.IsEmpty() || *p.Key == key {
+	if p.Key == nil || *p.Key == key {
 		t.Table[i] = e
 		return
 	}
@@ -39,7 +39,7 @@ func (t *HashTable) Put(key, value string) {
 func (t *HashTable) Get(key string) (string, bool) {
 	i := uint((t.Capacity - 1)) & Hash(key, t.Capacity)
 	p := t.Table[i]
-	if p.IsEmpty() {
+	if p.Key == nil {
 		return "", false
 	}
 
@@ -49,6 +49,10 @@ func (t *HashTable) Get(key string) (string, bool) {
 
 	n := p.Next
 	for {
+		if n == nil {
+			return "", false
+		}
+
 		if *n.Key == key {
 			return *n.Value, true
 		}
@@ -61,7 +65,7 @@ func (t *HashTable) Remove(key string) {
 	i := uint((t.Capacity - 1)) & Hash(key, t.Capacity)
 	p := t.Table[i]
 
-	if p.IsEmpty() {
+	if p.Key == nil {
 		return
 	}
 
@@ -73,6 +77,10 @@ func (t *HashTable) Remove(key string) {
 	prev := &p
 	n := p.Next
 	for {
+		if n == nil {
+			break
+		}
+
 		if *n.Key == key {
 			prev.Next = n.Next
 			break

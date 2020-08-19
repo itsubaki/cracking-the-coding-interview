@@ -2,19 +2,19 @@ package queue
 
 import "github.com/itsubaki/cracking-the-coding-interview/stack"
 
-type MyQueue struct {
+type ViaStack struct {
 	Newest *stack.Stack
 	Oldest *stack.Stack
 }
 
-func NewMyQueue() *MyQueue {
-	return &MyQueue{
+func NewViaStack() *ViaStack {
+	return &ViaStack{
 		Newest: stack.New(),
 		Oldest: stack.New(),
 	}
 }
 
-func (q *MyQueue) shift() {
+func (q *ViaStack) shift() {
 	for {
 		if q.Newest.IsEmpty() {
 			break
@@ -25,16 +25,16 @@ func (q *MyQueue) shift() {
 	}
 }
 
-func (q *MyQueue) Add(value int) {
+func (q *ViaStack) Add(value int) {
 	q.Newest.Push(value)
 }
 
-func (q *MyQueue) Peek() int {
+func (q *ViaStack) Peek() int {
 	q.shift()
 	return q.Oldest.Peek()
 }
 
-func (q *MyQueue) Remove() int {
+func (q *ViaStack) Remove() int {
 	q.shift()
 	return q.Oldest.Pop()
 }

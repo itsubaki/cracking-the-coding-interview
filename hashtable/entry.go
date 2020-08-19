@@ -8,10 +8,6 @@ type Entry struct {
 	Next  *Entry
 }
 
-func (e *Entry) IsEmpty() bool {
-	return e.Key == nil
-}
-
 func (e *Entry) String() string {
 	return fmt.Sprintf("%s: %s", *e.Key, *e.Value)
 }

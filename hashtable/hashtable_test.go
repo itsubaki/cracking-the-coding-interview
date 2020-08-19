@@ -5,17 +5,34 @@ import (
 )
 
 func TestHashTable(t *testing.T) {
+	cases := []struct {
+		key   string
+		value string
+	}{
+		{"foo", "bar"},
+		{"piyo", "fuga"},
+		{"color", "red"},
+	}
+
 	table := New()
 
-	table.Put("hoge", "foobar")
-	v, ok := table.Get("hoge")
-	if !ok || v != "foobar" {
+	for _, c := range cases {
+		table.Put(c.key, c.value)
+	}
+
+	for _, c := range cases {
+		v, ok := table.Get(c.key)
+		if ok && v == c.value {
+			continue
+		}
 		t.Errorf("v=%v, ok=%v", v, ok)
 	}
 
-	table.Remove("hoge")
-	_, ng := table.Get("hoge")
-	if ng {
-		t.Errorf("ok=%v", ng)
+	for _, c := range cases {
+		table.Remove(c.key)
+		v, ok := table.Get(c.key)
+		if ok {
+			t.Errorf("v=%v, ok=%v", v, ok)
+		}
 	}
 }

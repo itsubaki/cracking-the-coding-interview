@@ -17,7 +17,7 @@ func TestLinkedList(t *testing.T) {
 
 	list := New()
 	for _, c := range cases {
-		list.Add(&Node{Value: c.value})
+		list.Add(c.value)
 	}
 
 	for _, c := range cases {
