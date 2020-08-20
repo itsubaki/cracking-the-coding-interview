@@ -7,7 +7,38 @@ import (
 )
 
 func TestRemoveDups(t *testing.T) {
+	list := linkedlist.New()
+	for _, c := range []string{"a", "b", "a", "d", "a"} {
+		list.Add(c)
+	}
 
+	RemoveDups := func(list *linkedlist.LinkedList) *linkedlist.LinkedList {
+		set := make(map[string]bool)
+
+		n := list.Head
+		prev := &linkedlist.Node{}
+		for {
+			if n == nil {
+				break
+			}
+
+			if _, ok := set[n.Value]; ok {
+				prev.Next = n.Next
+			} else {
+				set[n.Value] = true
+				prev = n
+			}
+
+			n = n.Next
+		}
+
+		return list
+	}
+
+	result := RemoveDups(list)
+	if result.String() != "abd" {
+		t.Errorf("list=%s", result)
+	}
 }
 
 func TestReturnKthToLast(t *testing.T) {
