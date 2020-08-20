@@ -11,7 +11,52 @@ func TestRemoveDups(t *testing.T) {
 }
 
 func TestReturnKthToLast(t *testing.T) {
+	list := linkedlist.New()
+	for _, c := range []string{"a", "b", "c", "d", "e"} {
+		list.Add(c)
+	}
 
+	Kth := func(list *linkedlist.LinkedList, k int) (string, bool) {
+		p1, p2 := list.Head, list.Head
+
+		for i := 0; i < k; i++ {
+			if p1 == nil {
+				return "", false
+			}
+
+			p1 = p1.Next
+		}
+
+		for {
+			if p1.Next == nil {
+				break
+			}
+
+			p1, p2 = p1.Next, p2.Next
+		}
+
+		return p2.Value, true
+	}
+
+	cases := []struct {
+		k     int
+		value string
+	}{
+		{0, "e"},
+		{1, "d"},
+		{2, "c"},
+		{3, "b"},
+		{4, "a"},
+	}
+
+	for _, c := range cases {
+		result, ok := Kth(list, c.k)
+		if ok && result == c.value {
+			continue
+		}
+
+		t.Errorf("k=%v, ok=%v, expected=%v, actual=%v", c.k, ok, c.value, result)
+	}
 }
 
 func TestDeleteMiddleNode(t *testing.T) {
