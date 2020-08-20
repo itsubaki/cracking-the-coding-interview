@@ -15,7 +15,6 @@ func TestHashTable(t *testing.T) {
 	}
 
 	table := New()
-
 	for _, c := range cases {
 		table.Put(c.key, c.value)
 	}
