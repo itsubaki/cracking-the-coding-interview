@@ -3,10 +3,52 @@ package main
 import (
 	"testing"
 
+	"github.com/itsubaki/cracking-the-coding-interview/deck"
 	"github.com/itsubaki/cracking-the-coding-interview/hashtable"
 )
 
 func TestDeckOfCards(t *testing.T) {
+	d := deck.New()
+	if d.Size() != 52 {
+		t.Errorf("size: %v", d.Size())
+	}
+
+	cases := []struct {
+		num   int
+		value []deck.Card
+	}{
+		{
+			3,
+			[]deck.Card{
+				deck.Card{Suit: "Club", Value: 1},
+				deck.Card{Suit: "Club", Value: 2},
+				deck.Card{Suit: "Club", Value: 3},
+			},
+		},
+		{
+			4,
+			[]deck.Card{
+				deck.Card{Suit: "Club", Value: 4},
+				deck.Card{Suit: "Club", Value: 5},
+				deck.Card{Suit: "Club", Value: 6},
+				deck.Card{Suit: "Club", Value: 7},
+			},
+		},
+	}
+
+	for _, c := range cases {
+		cards := d.DealWith(c.num)
+		if len(c.value) != len(cards) {
+			t.Errorf("cards=%v", cards)
+		}
+
+		for i := 0; i < len(cards); i++ {
+			if c.value[i].String() != cards[i].String() {
+				t.Errorf("card=%v", cards[i])
+			}
+		}
+	}
+
 }
 
 func TestCallCenter(t *testing.T) {

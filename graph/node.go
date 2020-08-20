@@ -3,14 +3,14 @@ package graph
 type State int
 
 const (
-	Unvisited State = iota
-	Visited
-	Visiting
+	Unvisited = "Unvisited"
+	Visited   = "Visited"
+	Visiting  = "Visiting"
 )
 
 type Node struct {
 	Name     string
-	State    State
+	State    string
 	Children []*Node
 }
 
