@@ -128,7 +128,54 @@ func TestSumLists(t *testing.T) {
 }
 
 func TestLinkedListPalindrome(t *testing.T) {
+	Reverse := func(l *linkedlist.LinkedList) *linkedlist.LinkedList {
+		ret := linkedlist.New()
 
+		for i := l.Size - 1; i >= 0; i-- {
+			v, ok := l.Get(i)
+			if !ok {
+				panic("ERROR")
+			}
+
+			ret.Add(v.Value)
+		}
+
+		return ret
+	}
+
+	IsEqual := func(l1, l2 *linkedlist.LinkedList) bool {
+		if l1.Size != l2.Size {
+			return false
+		}
+
+		p1, p2 := l1.Head, l2.Head
+		for {
+			if p1 == nil && p2 == nil {
+				break
+			}
+
+			if p1.Value != p2.Value {
+				return false
+			}
+
+			p1, p2 = p1.Next, p2.Next
+		}
+
+		return true
+	}
+
+	Palindrome := func(list *linkedlist.LinkedList) bool {
+		return IsEqual(list, Reverse(list))
+	}
+
+	list := linkedlist.New()
+	for _, c := range []string{"a", "b", "c", "b", "a"} {
+		list.Add(c)
+	}
+
+	if !Palindrome(list) {
+		t.Fail()
+	}
 }
 
 func TestIntersection(t *testing.T) {
