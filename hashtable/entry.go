@@ -11,7 +11,3 @@ type Entry struct {
 func (e *Entry) String() string {
 	return fmt.Sprintf("%s: %s", *e.Key, *e.Value)
 }
-
-func Hash(key string, capacity int) uint {
-	return uint(len(key) % capacity)
-}

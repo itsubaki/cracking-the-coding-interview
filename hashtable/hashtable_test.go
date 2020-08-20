@@ -12,6 +12,7 @@ func TestHashTable(t *testing.T) {
 		{"foo", "bar"},
 		{"piyo", "fuga"},
 		{"color", "red"},
+		{"hoge", "hoge"},
 	}
 
 	table := New()
