@@ -39,6 +39,10 @@ func (d *Deck) DealWith(n int) []Card {
 	return c
 }
 
+func (d *Deck) Reset() {
+	d.Index = 0
+}
+
 func (d *Deck) Size() int {
 	return len(d.Cards)
 }
