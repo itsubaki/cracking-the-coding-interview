@@ -32,19 +32,19 @@ func (l *LinkedList) Add(value string) {
 	}
 }
 
-func (l *LinkedList) Get(i int) (*Node, bool) {
+func (l *LinkedList) Get(i int) (string, bool) {
 	if i > l.Size-1 {
-		return nil, false
+		return "", false
 	}
 
 	if i == 0 {
-		return l.Head, true
+		return l.Head.Value, true
 	}
 
 	k, n := 1, l.Head
 	for {
 		if k == i {
-			return n.Next, true
+			return n.Next.Value, true
 		}
 
 		k++

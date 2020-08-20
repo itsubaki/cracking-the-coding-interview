@@ -137,7 +137,7 @@ func TestLinkedListPalindrome(t *testing.T) {
 				panic("ERROR")
 			}
 
-			ret.Add(v.Value)
+			ret.Add(v)
 		}
 
 		return ret

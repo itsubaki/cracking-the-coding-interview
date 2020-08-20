@@ -21,9 +21,9 @@ func TestLinkedList(t *testing.T) {
 	}
 
 	for _, c := range cases {
-		n, ok := list.Get(c.index)
-		if !ok || n.Value != c.value {
-			t.Errorf("get(%d): ok=%v, v=%v", c.index, ok, n)
+		v, ok := list.Get(c.index)
+		if !ok || v != c.value {
+			t.Errorf("get(%d): ok=%v, v=%v", c.index, ok, v)
 		}
 	}
 
