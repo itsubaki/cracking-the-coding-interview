@@ -7,11 +7,6 @@ import (
 )
 
 func TestRemoveDups(t *testing.T) {
-	list := linkedlist.New()
-	for _, c := range []string{"a", "b", "a", "d", "a"} {
-		list.Add(c)
-	}
-
 	RemoveDups := func(list *linkedlist.LinkedList) *linkedlist.LinkedList {
 		set := make(map[string]bool)
 
@@ -35,6 +30,11 @@ func TestRemoveDups(t *testing.T) {
 		return list
 	}
 
+	list := linkedlist.New()
+	for _, c := range []string{"a", "b", "a", "d", "a"} {
+		list.Add(c)
+	}
+
 	result := RemoveDups(list)
 	if result.String() != "abd" {
 		t.Errorf("list=%s", result)
@@ -42,11 +42,6 @@ func TestRemoveDups(t *testing.T) {
 }
 
 func TestReturnKthToLast(t *testing.T) {
-	list := linkedlist.New()
-	for _, c := range []string{"a", "b", "c", "d", "e"} {
-		list.Add(c)
-	}
-
 	Kth := func(list *linkedlist.LinkedList, k int) (string, bool) {
 		p1, p2 := list.Head, list.Head
 
@@ -67,6 +62,11 @@ func TestReturnKthToLast(t *testing.T) {
 		}
 
 		return p2.Value, true
+	}
+
+	list := linkedlist.New()
+	for _, c := range []string{"a", "b", "c", "d", "e"} {
+		list.Add(c)
 	}
 
 	cases := []struct {
