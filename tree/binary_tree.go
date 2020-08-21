@@ -38,3 +38,15 @@ func (t *BinaryTree) IsFull() bool {
 func (t *BinaryTree) IsPerfect() bool {
 	return t.IsComplete() && t.IsFull()
 }
+
+func (t *BinaryTree) InOrder() []int {
+	return InOrder(t, []int{})
+}
+
+func (t *BinaryTree) PreOrder() []int {
+	return PreOrder(t, []int{})
+}
+
+func (t *BinaryTree) PostOrder() []int {
+	return PostOrder(t, []int{})
+}

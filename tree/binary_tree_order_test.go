@@ -1,6 +1,8 @@
 package tree
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestInOrder(t *testing.T) {
 	root := &BinaryTree{Value: 8}
@@ -10,7 +12,19 @@ func TestInOrder(t *testing.T) {
 	root.Add(6)
 	root.Add(20)
 
-	InOrder(root)
+	expected := []int{2, 4, 6, 8, 10, 20}
+	actual := root.InOrder()
+	if len(expected) != len(actual) {
+		t.Errorf("expected=%v, actual=%v", expected, actual)
+	}
+
+	for i := range expected {
+		if expected[i] == actual[i] {
+			continue
+		}
+
+		t.Errorf("expected=%v, actual=%v", expected, actual)
+	}
 }
 
 func TestPreOrder(t *testing.T) {
@@ -21,7 +35,19 @@ func TestPreOrder(t *testing.T) {
 	root.Add(6)
 	root.Add(20)
 
-	PreOrder(root)
+	expected := []int{8, 4, 2, 6, 10, 20}
+	actual := root.PreOrder()
+	if len(expected) != len(actual) {
+		t.Errorf("expected=%v, actual=%v", expected, actual)
+	}
+
+	for i := range expected {
+		if expected[i] == actual[i] {
+			continue
+		}
+
+		t.Errorf("expected=%v, actual=%v", expected, actual)
+	}
 }
 
 func TestPostOrder(t *testing.T) {
@@ -32,5 +58,17 @@ func TestPostOrder(t *testing.T) {
 	root.Add(6)
 	root.Add(20)
 
-	PostOrder(root)
+	expected := []int{2, 6, 4, 20, 10, 8}
+	actual := root.PostOrder()
+	if len(expected) != len(actual) {
+		t.Errorf("expected=%v, actual=%v", expected, actual)
+	}
+
+	for i := range expected {
+		if expected[i] == actual[i] {
+			continue
+		}
+
+		t.Errorf("expected=%v, actual=%v", expected, actual)
+	}
 }

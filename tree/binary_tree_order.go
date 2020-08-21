@@ -1,33 +1,31 @@
 package tree
 
-import "fmt"
-
-func InOrder(t *BinaryTree) {
+func InOrder(t *BinaryTree, out []int) []int {
 	if t == nil {
-		return
+		return out
 	}
 
-	InOrder(t.Left)
-	fmt.Println(t.Value)
-	InOrder(t.Right)
+	l := InOrder(t.Left, out)
+	l = append(l, t.Value)
+	return InOrder(t.Right, l)
 }
 
-func PreOrder(t *BinaryTree) {
+func PreOrder(t *BinaryTree, out []int) []int {
 	if t == nil {
-		return
+		return out
 	}
 
-	fmt.Println(t.Value)
-	PreOrder(t.Left)
-	PreOrder(t.Right)
+	out = append(out, t.Value)
+	l := PreOrder(t.Left, out)
+	return PreOrder(t.Right, l)
 }
 
-func PostOrder(t *BinaryTree) {
+func PostOrder(t *BinaryTree, out []int) []int {
 	if t == nil {
-		return
+		return out
 	}
 
-	PostOrder(t.Left)
-	PostOrder(t.Right)
-	fmt.Println(t.Value)
+	l := PostOrder(t.Left, out)
+	r := PostOrder(t.Right, l)
+	return append(r, t.Value)
 }
