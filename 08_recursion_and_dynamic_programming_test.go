@@ -32,18 +32,29 @@ func TestRobotInAGrid(t *testing.T) {
 }
 
 func TestMagicIndex(t *testing.T) {
-	magicSlow := func(n []int) int {
-		for i := range n {
-			if n[i] == i {
-				return i
-			}
-		}
-
-		return -1
+	cases := []struct {
+		a []int
+		b int
+	}{
+		{[]int{-40, -20, -1, 1, 2, 3, 5, 7, 9, 12, 13}, 7},
 	}
 
-	if magicSlow([]int{10, 9, 8, 7, 6, 5, 4, 3, 2, 1}) != 5 {
-		t.Fail()
+	for _, c := range cases {
+		result := recursion.MagicSlow(c.a)
+		if result == c.b {
+			continue
+		}
+
+		t.Errorf("expceted=%v, actual=%v", c.b, result)
+	}
+
+	for _, c := range cases {
+		result := recursion.MagicFast(c.a)
+		if result == c.b {
+			continue
+		}
+
+		t.Errorf("expceted=%v, actual=%v", c.b, result)
 	}
 }
 
@@ -52,7 +63,21 @@ func TestPowerSet(t *testing.T) {
 }
 
 func TestRecursiveMultiply(t *testing.T) {
+	cases := []struct {
+		a, b, c int
+	}{
+		{8, 7, 56},
+		{9, 2, 18},
+	}
 
+	for _, c := range cases {
+		result := recursion.MinProduct(c.a, c.b)
+		if result == c.c {
+			continue
+		}
+
+		t.Errorf("expceted=%v, actual=%v", c.b, result)
+	}
 }
 
 func TestTowersOfHanoi(t *testing.T) {
