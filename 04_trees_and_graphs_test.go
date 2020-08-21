@@ -99,6 +99,13 @@ func TestMinimalTree(t *testing.T) {
 	}
 }
 
+func TestCheckBalanced(t *testing.T) {
+	root := tree.NewMinBST([]int{1, 2, 3, 4, 5, 7, 8, 9})
+	if !tree.IsBalanced(root) {
+		t.Errorf("root=%v", root)
+	}
+}
+
 func TestValidateBST(t *testing.T) {
 	expected := []int{1, 2, 3, 4, 5, 7, 8, 9}
 	actual := tree.NewMinBST(expected).InOrder()
