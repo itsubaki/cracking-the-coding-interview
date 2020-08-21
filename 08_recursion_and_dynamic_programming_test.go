@@ -45,7 +45,7 @@ func TestMagicIndex(t *testing.T) {
 			continue
 		}
 
-		t.Errorf("expceted=%v, actual=%v", c.b, result)
+		t.Errorf("expected=%v, actual=%v", c.b, result)
 	}
 
 	for _, c := range cases {
@@ -54,7 +54,7 @@ func TestMagicIndex(t *testing.T) {
 			continue
 		}
 
-		t.Errorf("expceted=%v, actual=%v", c.b, result)
+		t.Errorf("expected=%v, actual=%v", c.b, result)
 	}
 }
 
@@ -76,7 +76,7 @@ func TestRecursiveMultiply(t *testing.T) {
 			continue
 		}
 
-		t.Errorf("expceted=%v, actual=%v", c.b, result)
+		t.Errorf("expected=%v, actual=%v", c.b, result)
 	}
 }
 
