@@ -4,6 +4,7 @@ import (
 	"testing"
 
 	"github.com/itsubaki/cracking-the-coding-interview/graph"
+	"github.com/itsubaki/cracking-the-coding-interview/tree"
 )
 
 func TestRouteBetweenNodes(t *testing.T) {
@@ -61,5 +62,56 @@ func TestRouteBetweenNodes(t *testing.T) {
 
 	if !Search(g, start, end) {
 		t.Fail()
+	}
+}
+
+func TestMinimalTree(t *testing.T) {
+	// 3 -> 1, 4
+	// 1 -> nil, 2
+	// 4 -> nil, 5
+	bst := tree.NewMinBST([]int{1, 2, 3, 4, 5})
+	if bst.Value != 3 {
+		t.Errorf("actual=%v", bst)
+	}
+
+	if bst.Left.Value != 1 {
+		t.Errorf("actual=%v", bst)
+	}
+
+	if bst.Right.Value != 4 {
+		t.Errorf("actual=%v", bst)
+	}
+
+	if bst.Left.Left != nil {
+		t.Errorf("actual=%v", bst)
+	}
+
+	if bst.Left.Right.Value != 2 {
+		t.Errorf("actual=%v", bst)
+	}
+
+	if bst.Right.Left != nil {
+		t.Errorf("actual=%v", bst)
+	}
+
+	if bst.Right.Right.Value != 5 {
+		t.Errorf("actual=%v", bst)
+	}
+}
+
+func TestValidateBST(t *testing.T) {
+	expected := []int{1, 2, 3, 4, 5, 7, 8, 9}
+	actual := tree.NewMinBST(expected).InOrder()
+
+	if len(expected) != len(actual) {
+		t.Errorf("expected=%v, actual=%v", expected, actual)
+	}
+
+	for i := range expected {
+		if expected[i] == actual[i] {
+			continue
+		}
+
+		t.Errorf("expected=%v, actual=%v", expected, actual)
 	}
 }
