@@ -5,34 +5,58 @@ import (
 )
 
 func TestBinaryTree(t *testing.T) {
-	root := &BinaryTree{Value: 8}
-	root.Add(4)
-	root.Add(10)
-	root.Add(2)
-	root.Add(6)
-	root.Add(20)
+	n4 := &BinaryTree{Value: 4}
+	n5 := &BinaryTree{Value: 5}
+	n2 := &BinaryTree{Value: 2, Left: n4, Right: n5}
+	n3 := &BinaryTree{Value: 3}
+	n1 := &BinaryTree{Value: 1, Left: n2, Right: n3}
 
-	if root.Left.Value != 4 {
-		t.Fail()
+	{
+		expected := []int{4, 2, 5, 1, 3}
+		actual := n1.InOrder()
+		if len(expected) != len(actual) {
+			t.Errorf("expected=%v, actual=%v", expected, actual)
+		}
+
+		for i := range expected {
+			if expected[i] == actual[i] {
+				continue
+			}
+
+			t.Errorf("expected=%v, actual=%v", expected, actual)
+		}
 	}
 
-	if root.Left.Left.Value != 2 {
-		t.Fail()
+	{
+		expected := []int{1, 2, 4, 5, 3}
+		actual := n1.PreOrder()
+		if len(expected) != len(actual) {
+			t.Errorf("expected=%v, actual=%v", expected, actual)
+		}
+
+		for i := range expected {
+			if expected[i] == actual[i] {
+				continue
+			}
+
+			t.Errorf("expected=%v, actual=%v", expected, actual)
+		}
 	}
 
-	if root.Left.Right.Value != 6 {
-		t.Fail()
+	{
+		expected := []int{4, 5, 2, 3, 1}
+		actual := n1.PostOrder()
+		if len(expected) != len(actual) {
+			t.Errorf("expected=%v, actual=%v", expected, actual)
+		}
+
+		for i := range expected {
+			if expected[i] == actual[i] {
+				continue
+			}
+
+			t.Errorf("expected=%v, actual=%v", expected, actual)
+		}
 	}
 
-	if root.Right.Value != 10 {
-		t.Fail()
-	}
-
-	if root.Right.Right.Value != 20 {
-		t.Fail()
-	}
-
-	if root.Right.Left != nil {
-		t.Fail()
-	}
 }

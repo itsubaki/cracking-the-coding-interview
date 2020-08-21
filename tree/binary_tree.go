@@ -6,25 +6,6 @@ type BinaryTree struct {
 	Right *BinaryTree
 }
 
-// for Binary Search Tree
-func (t *BinaryTree) Add(value int) {
-	if value <= t.Value {
-		if t.Left == nil {
-			t.Left = &BinaryTree{Value: value}
-		} else {
-			t.Left.Add(value)
-		}
-
-		return
-	}
-
-	if t.Right == nil {
-		t.Right = &BinaryTree{Value: value}
-	} else {
-		t.Right.Add(value)
-	}
-}
-
 func (t *BinaryTree) IsComplete() bool {
 	// TODO
 	return false
