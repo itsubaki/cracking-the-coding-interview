@@ -84,3 +84,48 @@ func TestBinaryToString(t *testing.T) {
 		t.Errorf("ToString: expected=%v, actual=%v", c.bin, result)
 	}
 }
+
+func TestConversion(t *testing.T) {
+	BitSwapRequired := func(a, b int) int {
+		count := 0
+		for c := a ^ b; c != 0; c = c >> 1 {
+			count = count + c&1
+		}
+
+		return count
+	}
+
+	cases := []struct {
+		a, b, c int
+	}{
+		{29, 15, 2},
+	}
+
+	for _, c := range cases {
+		result := BitSwapRequired(c.a, c.b)
+		if result == c.c {
+			continue
+		}
+
+		t.Errorf("BitSwapRequired: expected=%v, actual=%v", c.c, result)
+	}
+}
+
+func TestPairwiseSwap(t *testing.T) {
+	SwapOddEvenBits := func(x int) int {
+		return ((x & 0xaaaaaaaa) >> 1) | ((x & 0x55555555) << 1)
+	}
+
+	cases := []struct {
+		a, b int
+	}{
+		{10, 5}, // 10 (1010) -> 5 (0101)
+	}
+
+	for _, c := range cases {
+		result := SwapOddEvenBits(c.a)
+		if result != c.b {
+			t.Errorf("expected=%v, actual=%v", c.b, result)
+		}
+	}
+}
