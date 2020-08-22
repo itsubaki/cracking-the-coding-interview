@@ -1,6 +1,9 @@
 package tree
 
+import "sort"
+
 func NewMinBST(array []int) *BinaryTree {
+	sort.Ints(array)
 	return newMinBST(array, 0, len(array)-1)
 }
 

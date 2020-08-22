@@ -8,7 +8,7 @@ func TestBinarySearchTree(t *testing.T) {
 	// 3 -> 1, 4
 	// 1 -> nil, 2
 	// 4 -> nil, 5
-	bst := NewMinBST([]int{1, 2, 3, 4, 5})
+	bst := NewMinBST([]int{1, 4, 5, 2, 3})
 	if bst.Value != 3 {
 		t.Errorf("actual=%v", bst)
 	}
