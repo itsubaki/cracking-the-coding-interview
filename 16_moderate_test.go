@@ -18,11 +18,11 @@ func TestNumberSwapper(t *testing.T) {
 	}
 
 	for _, c := range cases {
-		s1, s2 := Swap(c.a, c.b)
-		if s1 == c.b && s2 == c.a {
+		a, b := Swap(c.a, c.b)
+		if a == c.b && b == c.a {
 			continue
 		}
 
-		t.Errorf("expected=%v %v, actual=%v %v", c.a, c.b, s1, s2)
+		t.Errorf("expected=%v %v, actual=%v %v", c.a, c.b, a, b)
 	}
 }
