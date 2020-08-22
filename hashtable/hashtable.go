@@ -1,5 +1,10 @@
 package hashtable
 
+import (
+	"fmt"
+	"strings"
+)
+
 type HashTable struct {
 	Table    []*Entry
 	Capacity int
@@ -154,4 +159,27 @@ func (t *HashTable) Resize() {
 	t.Table = newTable.Table
 	t.Capacity = newTable.Capacity
 	t.Size = newTable.Size
+}
+
+func (t *HashTable) String() string {
+	var sb strings.Builder
+	for _, e := range t.Table {
+		if e == nil {
+			continue
+		}
+		sb.WriteString(fmt.Sprintf("%s, ", e))
+
+		n := e.Next
+		for {
+			if n == nil {
+				break
+			}
+
+			sb.WriteString(fmt.Sprintf("%s, ", e))
+			n = n.Next
+		}
+	}
+
+	str := sb.String()
+	return str[:len(str)-2] // remove ", "
 }
