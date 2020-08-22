@@ -9,9 +9,7 @@ func TestAddWithoutPlus(t *testing.T) {
 				break
 			}
 
-			sum := a ^ b
-			carry := (a & b) << 1
-
+			sum, carry := a^b, (a&b)<<1
 			a, b = sum, carry
 		}
 
