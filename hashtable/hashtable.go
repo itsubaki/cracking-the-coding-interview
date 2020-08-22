@@ -3,6 +3,7 @@ package hashtable
 type HashTable struct {
 	Table    []*Entry
 	Capacity int
+	Size     int
 }
 
 func New() *HashTable {
@@ -12,6 +13,17 @@ func New() *HashTable {
 	return &HashTable{
 		Table:    table,
 		Capacity: capacity,
+		Size:     0,
+	}
+}
+
+func NewWith(capacity int) *HashTable {
+	table := make([]*Entry, capacity)
+
+	return &HashTable{
+		Table:    table,
+		Capacity: capacity,
+		Size:     0,
 	}
 }
 
@@ -20,11 +32,23 @@ func Hash(key string, capacity int) uint {
 }
 
 func (t *HashTable) Put(key, value string) {
-	e := &Entry{Key: &key, Value: &value}
+	defer func() {
+		if t.Size > t.Capacity {
+			t.Resize()
+		}
+	}()
+
 	i := uint((t.Capacity - 1)) & Hash(key, t.Capacity)
+	e := &Entry{Key: &key, Value: &value}
 
 	p := t.Table[i]
-	if p == nil || *p.Key == key {
+	if p == nil {
+		t.Table[i] = e
+		t.Size++
+		return
+	}
+
+	if *p.Key == key {
 		t.Table[i] = e
 		return
 	}
@@ -33,6 +57,7 @@ func (t *HashTable) Put(key, value string) {
 	for {
 		if n.Next == nil {
 			n.Next = e
+			t.Size++
 			break
 		}
 
@@ -74,9 +99,15 @@ func (t *HashTable) Remove(key string) {
 		return
 	}
 
-	if *p.Key == key {
-		t.Table = append(t.Table[:i], t.Table[i+1:]...)
+	if *p.Key == key && p.Next == nil {
+		t.Table[i] = nil
+		t.Size--
 		return
+	}
+
+	if *p.Key == key && p.Next != nil {
+		t.Table[i] = p.Next
+		t.Size--
 	}
 
 	prev := p
@@ -88,10 +119,39 @@ func (t *HashTable) Remove(key string) {
 
 		if *next.Key == key {
 			prev.Next = next.Next
+			t.Size--
 			break
 		}
 
 		prev = next
 		next = next.Next
 	}
+}
+
+func (t *HashTable) Resize() {
+	newCapacity := t.Capacity << 1
+	newTable := NewWith(newCapacity)
+
+	for i := 0; i < t.Capacity; i++ {
+		p := t.Table[i]
+		if p == nil {
+			continue
+		}
+
+		newTable.Put(*p.Key, *p.Value)
+
+		n := p.Next
+		for {
+			if n == nil {
+				break
+			}
+
+			newTable.Put(*n.Key, *n.Value)
+			n = n.Next
+		}
+	}
+
+	t.Table = newTable.Table
+	t.Capacity = newTable.Capacity
+	t.Size = newTable.Size
 }
