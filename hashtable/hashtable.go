@@ -29,6 +29,10 @@ func Hash(key string, capacity int) uint {
 	return uint(len(key) % capacity)
 }
 
+func Index(key string, capacity int) uint {
+	return uint((capacity - 1)) & Hash(key, capacity)
+}
+
 func (t *HashTable) Put(key, value string) {
 	defer func() {
 		if t.Size > t.Capacity {
@@ -36,7 +40,7 @@ func (t *HashTable) Put(key, value string) {
 		}
 	}()
 
-	i := uint((t.Capacity - 1)) & Hash(key, t.Capacity)
+	i := Index(key, t.Capacity)
 	e := &Entry{Key: &key, Value: &value}
 
 	p := t.Table[i]
@@ -47,7 +51,7 @@ func (t *HashTable) Put(key, value string) {
 	}
 
 	if *p.Key == key {
-		t.Table[i] = e
+		t.Table[i].Value = &value
 		return
 	}
 
@@ -59,12 +63,17 @@ func (t *HashTable) Put(key, value string) {
 			break
 		}
 
+		if *n.Next.Key == key {
+			n.Next.Value = &value
+			break
+		}
+
 		n = n.Next
 	}
 }
 
 func (t *HashTable) Get(key string) (string, bool) {
-	i := uint((t.Capacity - 1)) & Hash(key, t.Capacity)
+	i := Index(key, t.Capacity)
 
 	p := t.Table[i]
 	if p == nil {
@@ -90,7 +99,7 @@ func (t *HashTable) Get(key string) (string, bool) {
 }
 
 func (t *HashTable) Remove(key string) {
-	i := uint((t.Capacity - 1)) & Hash(key, t.Capacity)
+	i := Index(key, t.Capacity)
 
 	p := t.Table[i]
 	if p == nil {
