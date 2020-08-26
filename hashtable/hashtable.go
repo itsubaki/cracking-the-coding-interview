@@ -12,14 +12,7 @@ type HashTable struct {
 }
 
 func New() *HashTable {
-	capacity := 1 << 4
-	table := make([]*Entry, capacity)
-
-	return &HashTable{
-		Table:    table,
-		Capacity: capacity,
-		Size:     0,
-	}
+	return NewWith(1 << 4)
 }
 
 func NewWith(capacity int) *HashTable {

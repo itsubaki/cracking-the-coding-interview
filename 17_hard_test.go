@@ -1,6 +1,8 @@
 package main
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestAddWithoutPlus(t *testing.T) {
 	Add := func(a, b int) int {
