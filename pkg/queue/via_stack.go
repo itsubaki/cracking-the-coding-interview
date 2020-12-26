@@ -1,6 +1,6 @@
 package queue
 
-import "github.com/itsubaki/cracking-the-coding-interview/stack"
+import "github.com/itsubaki/cracking-the-coding-interview/pkg/stack"
 
 type ViaStack struct {
 	Newest *stack.Stack

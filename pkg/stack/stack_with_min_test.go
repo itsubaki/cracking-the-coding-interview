@@ -1,9 +1,13 @@
-package stack
+package stack_test
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/itsubaki/cracking-the-coding-interview/pkg/stack"
+)
 
 func TestStackWithMin(t *testing.T) {
-	s := NewWithMin()
+	s := stack.NewWithMin()
 
 	push := []struct {
 		value int

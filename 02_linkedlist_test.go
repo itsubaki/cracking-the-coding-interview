@@ -1,9 +1,9 @@
-package main
+package main_test
 
 import (
 	"testing"
 
-	"github.com/itsubaki/cracking-the-coding-interview/linkedlist"
+	"github.com/itsubaki/cracking-the-coding-interview/pkg/linkedlist"
 )
 
 func TestRemoveDups(t *testing.T) {

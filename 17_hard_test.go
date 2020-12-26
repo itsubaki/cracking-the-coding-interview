@@ -1,8 +1,6 @@
-package main
+package main_test
 
-import (
-	"testing"
-)
+import "testing"
 
 func TestAddWithoutPlus(t *testing.T) {
 	Add := func(a, b int) int {

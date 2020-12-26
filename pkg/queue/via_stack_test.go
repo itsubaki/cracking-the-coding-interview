@@ -1,6 +1,10 @@
-package queue
+package queue_test
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/itsubaki/cracking-the-coding-interview/pkg/queue"
+)
 
 func TestViaStack(t *testing.T) {
 	cases := []struct {
@@ -13,7 +17,7 @@ func TestViaStack(t *testing.T) {
 		{5},
 	}
 
-	q := NewViaStack()
+	q := queue.NewViaStack()
 	for _, c := range cases {
 		q.Add(c.value)
 	}

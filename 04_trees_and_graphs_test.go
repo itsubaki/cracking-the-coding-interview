@@ -1,10 +1,10 @@
-package main
+package main_test
 
 import (
 	"testing"
 
-	"github.com/itsubaki/cracking-the-coding-interview/graph"
-	"github.com/itsubaki/cracking-the-coding-interview/tree"
+	"github.com/itsubaki/cracking-the-coding-interview/pkg/graph"
+	"github.com/itsubaki/cracking-the-coding-interview/pkg/tree"
 )
 
 func TestRouteBetweenNodes(t *testing.T) {

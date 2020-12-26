@@ -1,6 +1,10 @@
-package stack
+package stack_test
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/itsubaki/cracking-the-coding-interview/pkg/stack"
+)
 
 func TestStack(t *testing.T) {
 	cases := []struct {
@@ -12,7 +16,7 @@ func TestStack(t *testing.T) {
 		{7},
 	}
 
-	s := New()
+	s := stack.New()
 	for _, c := range cases {
 		s.Push(c.value)
 	}

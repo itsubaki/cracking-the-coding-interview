@@ -1,7 +1,9 @@
-package linkedlist
+package linkedlist_test
 
 import (
 	"testing"
+
+	"github.com/itsubaki/cracking-the-coding-interview/pkg/linkedlist"
 )
 
 func TestLinkedList(t *testing.T) {
@@ -15,7 +17,7 @@ func TestLinkedList(t *testing.T) {
 		{3, "d"},
 	}
 
-	list := New()
+	list := linkedlist.New()
 	for _, c := range cases {
 		list.Add(c.value)
 	}
@@ -48,5 +50,4 @@ func TestLinkedList(t *testing.T) {
 			t.Errorf("list=%s", list)
 		}
 	}
-
 }

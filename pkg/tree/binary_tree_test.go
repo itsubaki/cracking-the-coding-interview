@@ -1,15 +1,17 @@
-package tree
+package tree_test
 
 import (
 	"testing"
+
+	"github.com/itsubaki/cracking-the-coding-interview/pkg/tree"
 )
 
 func TestBinaryTree(t *testing.T) {
-	n4 := &BinaryTree{Value: 4}
-	n5 := &BinaryTree{Value: 5}
-	n2 := &BinaryTree{Value: 2, Left: n4, Right: n5}
-	n3 := &BinaryTree{Value: 3}
-	n1 := &BinaryTree{Value: 1, Left: n2, Right: n3}
+	n4 := &tree.BinaryTree{Value: 4}
+	n5 := &tree.BinaryTree{Value: 5}
+	n2 := &tree.BinaryTree{Value: 2, Left: n4, Right: n5}
+	n3 := &tree.BinaryTree{Value: 3}
+	n1 := &tree.BinaryTree{Value: 1, Left: n2, Right: n3}
 
 	{
 		expected := []int{4, 2, 5, 1, 3}
@@ -58,5 +60,4 @@ func TestBinaryTree(t *testing.T) {
 			t.Errorf("expected=%v, actual=%v", expected, actual)
 		}
 	}
-
 }

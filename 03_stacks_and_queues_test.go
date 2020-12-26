@@ -1,10 +1,10 @@
-package main
+package main_test
 
 import (
 	"testing"
 
-	"github.com/itsubaki/cracking-the-coding-interview/queue"
-	"github.com/itsubaki/cracking-the-coding-interview/stack"
+	"github.com/itsubaki/cracking-the-coding-interview/pkg/queue"
+	"github.com/itsubaki/cracking-the-coding-interview/pkg/stack"
 )
 
 func TestThreeInOne(t *testing.T) {

@@ -1,7 +1,9 @@
-package hashtable
+package hashtable_test
 
 import (
 	"testing"
+
+	"github.com/itsubaki/cracking-the-coding-interview/pkg/hashtable"
 )
 
 func TestHashTable(t *testing.T) {
@@ -16,7 +18,7 @@ func TestHashTable(t *testing.T) {
 		{"hoge", "hoge", 4},
 	}
 
-	table := New()
+	table := hashtable.New()
 	for _, c := range cases {
 		table.Put(c.key, c.value)
 		if table.Size == c.size {
@@ -58,7 +60,7 @@ func TestResize(t *testing.T) {
 		{"hoge", "hoge", 4},
 	}
 
-	table := New()
+	table := hashtable.New()
 	for _, c := range cases {
 		table.Put(c.key, c.value)
 		if table.Size == c.size {
