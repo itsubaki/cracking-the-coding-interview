@@ -16,8 +16,7 @@ func TestIsUnique(t *testing.T) {
 
 		counter := make(map[int32]bool)
 		for _, c := range str {
-			_, ok := counter[c]
-			if ok {
+			if _, ok := counter[c]; ok {
 				return false
 			}
 
@@ -113,8 +112,7 @@ func TestPermutationOfPalindrome(t *testing.T) {
 
 		counter := make(map[int32]int)
 		for _, s := range low {
-			_, ok := counter[s]
-			if ok {
+			if _, ok := counter[s]; ok {
 				counter[s]++
 				continue
 			}
@@ -131,6 +129,7 @@ func TestPermutationOfPalindrome(t *testing.T) {
 			if odd {
 				return false
 			}
+
 			odd = true
 		}
 
@@ -187,6 +186,7 @@ func TestOneAway(t *testing.T) {
 			if index1 != index2 {
 				return false
 			}
+
 			index2++
 		}
 

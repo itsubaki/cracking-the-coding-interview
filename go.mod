@@ -1,3 +1,3 @@
 module github.com/itsubaki/cracking-the-coding-interview
 
-go 1.12
+go 1.16

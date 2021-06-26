@@ -20,18 +20,18 @@ func TestDeckOfCards(t *testing.T) {
 		{
 			3,
 			[]deck.Card{
-				deck.Card{Suit: "Club", Value: 1},
-				deck.Card{Suit: "Club", Value: 2},
-				deck.Card{Suit: "Club", Value: 3},
+				{Suit: "Club", Value: 1},
+				{Suit: "Club", Value: 2},
+				{Suit: "Club", Value: 3},
 			},
 		},
 		{
 			4,
 			[]deck.Card{
-				deck.Card{Suit: "Club", Value: 4},
-				deck.Card{Suit: "Club", Value: 5},
-				deck.Card{Suit: "Club", Value: 6},
-				deck.Card{Suit: "Club", Value: 7},
+				{Suit: "Club", Value: 4},
+				{Suit: "Club", Value: 5},
+				{Suit: "Club", Value: 6},
+				{Suit: "Club", Value: 7},
 			},
 		},
 	}
@@ -112,6 +112,7 @@ func TestHashTable(t *testing.T) {
 		if ok && v == c.value {
 			continue
 		}
+
 		t.Errorf("v=%v, ok=%v", v, ok)
 	}
 
