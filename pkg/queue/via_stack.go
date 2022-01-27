@@ -2,39 +2,45 @@ package queue
 
 import "github.com/itsubaki/cracking-the-coding-interview/pkg/stack"
 
-type ViaStack struct {
-	Newest *stack.Stack
-	Oldest *stack.Stack
+type Queue struct {
+	in  *stack.Stack
+	out *stack.Stack
 }
 
-func NewViaStack() *ViaStack {
-	return &ViaStack{
-		Newest: stack.New(),
-		Oldest: stack.New(),
+func NewViaStack() *Queue {
+	return &Queue{
+		in:  stack.New(),
+		out: stack.New(),
 	}
 }
 
-func (q *ViaStack) shift() {
+func (q *Queue) Enq(e int) {
+	q.in.Push(e)
+}
+
+func (q *Queue) Deq() int {
+	if q.out.IsEmpty() {
+		q.shift()
+	}
+
+	return q.out.Pop()
+}
+
+func (q *Queue) Front() int {
+	if q.out.IsEmpty() {
+		q.shift()
+	}
+
+	return q.out.Top()
+}
+
+func (q *Queue) shift() {
 	for {
-		if q.Newest.IsEmpty() {
+		if q.in.IsEmpty() {
 			break
 		}
 
-		v := q.Newest.Pop()
-		q.Oldest.Push(v)
+		v := q.in.Pop()
+		q.out.Push(v)
 	}
-}
-
-func (q *ViaStack) Add(value int) {
-	q.Newest.Push(value)
-}
-
-func (q *ViaStack) Peek() int {
-	q.shift()
-	return q.Oldest.Peek()
-}
-
-func (q *ViaStack) Remove() int {
-	q.shift()
-	return q.Oldest.Pop()
 }

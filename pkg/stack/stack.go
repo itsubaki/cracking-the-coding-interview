@@ -20,7 +20,7 @@ func (s *Stack) Pop() int {
 	return ret
 }
 
-func (s *Stack) Peek() int {
+func (s *Stack) Top() int {
 	return s.values[len(s.values)-1]
 }
 

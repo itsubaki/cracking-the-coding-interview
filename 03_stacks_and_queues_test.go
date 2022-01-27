@@ -69,11 +69,11 @@ func TestQueueViaStack(t *testing.T) {
 
 	q := queue.NewViaStack()
 	for _, c := range cases {
-		q.Add(c.value)
+		q.Enq(c.value)
 	}
 
 	for _, c := range cases {
-		if q.Remove() == c.value {
+		if q.Deq() == c.value {
 			continue
 		}
 		t.Fail()

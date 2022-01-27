@@ -45,5 +45,5 @@ func (s *StackWithMin) Min() int {
 		return math.MaxInt8
 	}
 
-	return s.min.Peek()
+	return s.min.Top()
 }
