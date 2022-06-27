@@ -3,7 +3,7 @@ package main_test
 import (
 	"testing"
 
-	"github.com/itsubaki/cracking-the-coding-interview/pkg/recursion"
+	"github.com/itsubaki/cracking-the-coding-interview/recursion"
 )
 
 func TestTripleStep(t *testing.T) {

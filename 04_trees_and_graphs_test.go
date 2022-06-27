@@ -3,8 +3,8 @@ package main_test
 import (
 	"testing"
 
-	"github.com/itsubaki/cracking-the-coding-interview/pkg/graph"
-	"github.com/itsubaki/cracking-the-coding-interview/pkg/tree"
+	"github.com/itsubaki/cracking-the-coding-interview/graph"
+	"github.com/itsubaki/cracking-the-coding-interview/tree"
 )
 
 func TestRouteBetweenNodes(t *testing.T) {

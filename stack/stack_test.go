@@ -3,7 +3,7 @@ package stack_test
 import (
 	"testing"
 
-	"github.com/itsubaki/cracking-the-coding-interview/pkg/stack"
+	"github.com/itsubaki/cracking-the-coding-interview/stack"
 )
 
 func TestStack(t *testing.T) {

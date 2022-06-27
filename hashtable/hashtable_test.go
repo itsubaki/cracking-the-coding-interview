@@ -3,7 +3,7 @@ package hashtable_test
 import (
 	"testing"
 
-	"github.com/itsubaki/cracking-the-coding-interview/pkg/hashtable"
+	"github.com/itsubaki/cracking-the-coding-interview/hashtable"
 )
 
 func TestHashTable(t *testing.T) {

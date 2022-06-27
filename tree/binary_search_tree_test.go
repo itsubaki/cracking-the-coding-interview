@@ -3,7 +3,7 @@ package tree_test
 import (
 	"testing"
 
-	"github.com/itsubaki/cracking-the-coding-interview/pkg/tree"
+	"github.com/itsubaki/cracking-the-coding-interview/tree"
 )
 
 func TestBinarySearchTree(t *testing.T) {

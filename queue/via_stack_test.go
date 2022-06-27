@@ -3,7 +3,7 @@ package queue_test
 import (
 	"testing"
 
-	"github.com/itsubaki/cracking-the-coding-interview/pkg/queue"
+	"github.com/itsubaki/cracking-the-coding-interview/queue"
 )
 
 func TestViaStack(t *testing.T) {

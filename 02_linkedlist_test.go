@@ -3,7 +3,7 @@ package main_test
 import (
 	"testing"
 
-	"github.com/itsubaki/cracking-the-coding-interview/pkg/linkedlist"
+	"github.com/itsubaki/cracking-the-coding-interview/linkedlist"
 )
 
 func TestRemoveDups(t *testing.T) {

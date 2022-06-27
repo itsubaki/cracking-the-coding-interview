@@ -1,6 +1,6 @@
 package queue
 
-import "github.com/itsubaki/cracking-the-coding-interview/pkg/stack"
+import "github.com/itsubaki/cracking-the-coding-interview/stack"
 
 type Queue struct {
 	in  *stack.Stack

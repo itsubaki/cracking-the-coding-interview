@@ -3,7 +3,7 @@ package linkedlist_test
 import (
 	"testing"
 
-	"github.com/itsubaki/cracking-the-coding-interview/pkg/linkedlist"
+	"github.com/itsubaki/cracking-the-coding-interview/linkedlist"
 )
 
 func TestLinkedList(t *testing.T) {

@@ -3,8 +3,8 @@ package main_test
 import (
 	"testing"
 
-	"github.com/itsubaki/cracking-the-coding-interview/pkg/deck"
-	"github.com/itsubaki/cracking-the-coding-interview/pkg/hashtable"
+	"github.com/itsubaki/cracking-the-coding-interview/deck"
+	"github.com/itsubaki/cracking-the-coding-interview/hashtable"
 )
 
 func TestDeckOfCards(t *testing.T) {
