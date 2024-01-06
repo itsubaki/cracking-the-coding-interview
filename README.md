@@ -1,5 +1,5 @@
 # cracking the coding interview
 
-# Ref
+## Links
 
-1.  [Cracking the Coding Interview](https://www.amazon.co.jp/dp/0984782850)
+ - [Cracking the Coding Interview](https://www.amazon.co.jp/dp/0984782850)
